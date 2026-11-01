@@ -75,7 +75,10 @@ def kennzahlen(d):
         "abstand_52w_tief_pct": round((a.iloc[-1] / lo252 - 1) * 100, 2),
         "umsatz_median_chf": round(umsatz),
         "liquiditaet": "A" if umsatz >= 1_000_000 else "B",
-        "warn_split": bool(sprung_roh > 0.35 and sprung_ber < 0.25),
+        # Hinweis: Split im letzten Jahr, von EODHD korrekt bereinigt (keine Massnahme nötig)
+        "split_bereinigt": bool(sprung_roh > 0.35 and sprung_ber < 0.25),
+        # Warnung: auch der bereinigte Kurs springt um mehr als 35 % -> Daten prüfen (Split nicht bereinigt oder Datenfehler)
+        "warn_split_unbereinigt": bool(sprung_ber > 0.35),
         "tage_historie": len(d),
     }
 
@@ -138,9 +141,10 @@ def main():
     soll = t["datum"].mode().iloc[0]
     t["veraltet"] = t["datum"] != soll
     t.to_csv(os.path.join(OUT, "kennzahlen.csv"), index=False)
-    status = {"lauf_utc": dt.datetime.utcnow().isoformat(timespec="seconds"), "handelstag": soll,
+    status = {"lauf_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"), "handelstag": soll,
               "titel_ok": int((~t["veraltet"]).sum()), "titel_total": len(UNIVERSUM) + len(VERGLEICH),
-              "veraltet": t.loc[t["veraltet"], "titel"].tolist(), "split_warnung": t.loc[t["warn_split"], "titel"].tolist(),
+              "veraltet": t.loc[t["veraltet"], "titel"].tolist(), "split_bereinigt_hinweis": t.loc[t["split_bereinigt"], "titel"].tolist(),
+              "warnung_split_unbereinigt": t.loc[t["warn_split_unbereinigt"], "titel"].tolist(),
               "fehler": fehler, "fundamentaldaten": FUND}
     with open(os.path.join(OUT, "status.json"), "w") as fh:
         json.dump(status, fh, ensure_ascii=False, indent=2)
