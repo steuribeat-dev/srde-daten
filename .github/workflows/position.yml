@@ -1,0 +1,60 @@
+name: Position erfassen
+
+on:
+  workflow_dispatch:
+    inputs:
+      aktion:
+        description: "Kauf oder Verkauf"
+        type: choice
+        options: [Kauf, Verkauf]
+        required: true
+      titel:
+        description: "Kürzel, z. B. NOVN"
+        required: true
+      stueck:
+        description: "Anzahl (bei Verkauf leer = alles)"
+        required: false
+      kurs:
+        description: "Ausführungskurs in CHF, z. B. 131.50"
+        required: false
+      ziel:
+        description: "Kursziel aus der Ordervorlage (optional)"
+        required: false
+      datum:
+        description: "Datum JJJJ-MM-TT (leer = heute)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-schreiben
+  cancel-in-progress: false
+
+jobs:
+  erfassen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Position nachführen
+        env:
+          AKTION: ${{ inputs.aktion }}
+          TITEL: ${{ inputs.titel }}
+          STUECK: ${{ inputs.stueck }}
+          KURS: ${{ inputs.kurs }}
+          ZIEL: ${{ inputs.ziel }}
+          DATUM: ${{ inputs.datum }}
+        run: python position.py | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Speichern
+        run: |
+          git config user.name "srde-bot"
+          git config user.email "srde-bot@users.noreply.github.com"
+          git add data/positionen.csv
+          git diff --cached --quiet && exit 0
+          git commit -m "Position: ${{ inputs.aktion }} ${{ inputs.titel }}"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1
