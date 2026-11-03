@@ -1,18 +1,14 @@
 {
-  "lauf_utc": "2026-11-03T00:03:13",
-  "handelstag": "2026-11-02",
-  "titel_ok": 109,
+  "lauf_utc": "2026-11-03T21:38:00",
+  "handelstag": "2026-11-03",
+  "titel_ok": 111,
   "titel_total": 111,
-  "veraltet": [
-    "COPN"
-  ],
+  "veraltet": [],
   "split_bereinigt_hinweis": [
     "DOKA",
     "SQN"
   ],
   "warnung_split_unbereinigt": [],
-  "fehler": [
-    "VALN: keine oder zu wenig Kursdaten"
-  ],
+  "fehler": [],
   "fundamentaldaten": false
 }
