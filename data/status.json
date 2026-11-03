@@ -1,14 +1,18 @@
 {
-  "lauf_utc": "2026-11-01T22:50:13",
-  "handelstag": "2026-10-30",
-  "titel_ok": 47,
-  "titel_total": 48,
+  "lauf_utc": "2026-11-03T00:03:13",
+  "handelstag": "2026-11-02",
+  "titel_ok": 109,
+  "titel_total": 111,
   "veraltet": [
-    "BAER"
+    "COPN"
   ],
-  "split_warnung": [
-    "DOKA"
+  "split_bereinigt_hinweis": [
+    "DOKA",
+    "SQN"
   ],
-  "fehler": [],
+  "warnung_split_unbereinigt": [],
+  "fehler": [
+    "VALN: keine oder zu wenig Kursdaten"
+  ],
   "fundamentaldaten": false
 }
