@@ -28,9 +28,9 @@ UNIVERSUM = [
     "BANB", "IFCN", "INRN", "KARN", "COTN", "ACLN", "MOVE", "CMBN", "VONN", "EFGN",
     "SQN", "VZN", "PSPN", "SPSN", "ALLN", "MOBN", "FHZN", "GALE", "MEDX", "HUBN",
     "IMPN", "ARBN", "AUTN", "BKW", "DOCM", "OERL", "SIGN", "SFSN", "FORN", "DESN",
-    "TEMN", "SWON", "LAND", "AERO", "VAHN", "HBAN", "VALN", "SGKN", "ZUGN", "TKBP",
+    "TEMN", "SWON", "LAND", "AERO", "VAHN", "HBAN", "VATN", "SGKN", "ZUGN", "TKBP",
     "CLTN", "VETN", "ZEHN", "LLBN", "VPBN", "BEAN", "AVOL", "MOZN", "LEON", "RIEN",
-    "COPN", "TXGN", "GRKP"]
+    "BCGE", "TXGN", "GRKP"]
 VERGLEICH = ["CHSPI"]     # SPI-ETF als Vergleichsmassstab
 
 def hole(url, versuche=3):
