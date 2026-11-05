@@ -1,12 +1,9 @@
 {
-  "lauf_utc": "2026-11-04T22:53:16",
-  "handelstag": "2026-11-04",
-  "titel_ok": 109,
+  "lauf_utc": "2026-11-05T22:51:20",
+  "handelstag": "2026-11-05",
+  "titel_ok": 111,
   "titel_total": 111,
-  "veraltet": [
-    "NESN",
-    "COTN"
-  ],
+  "veraltet": [],
   "split_bereinigt_hinweis": [
     "DOKA",
     "SQN"
