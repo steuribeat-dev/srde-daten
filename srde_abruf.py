@@ -48,9 +48,9 @@ def hole(url, versuche=3):
             time.sleep(2 * (i + 1))
     return None
 
-def kurse(sym):
+def kurse(sym, boerse="SW"):
     von = (dt.date.today() - dt.timedelta(days=HIST_DAYS)).isoformat()
-    j = hole(f"https://eodhd.com/api/eod/{sym}.SW?api_token={KEY}&fmt=json&from={von}")
+    j = hole(f"https://eodhd.com/api/eod/{sym}.{boerse}?api_token={KEY}&fmt=json&from={von}")
     if not j:
         return None
     d = pd.DataFrame(j)
@@ -99,10 +99,13 @@ def kennzahlen(d):
         "tage_historie": len(d),
     }
 
-def fundamental(sym):
-    j = hole(f"https://eodhd.com/api/fundamentals/{sym}.SW?api_token={KEY}&fmt=json")
+def fundamental(sym, boerse="SW"):
+    j = hole(f"https://eodhd.com/api/fundamentals/{sym}.{boerse}?api_token={KEY}&fmt=json")
     if not j:
         return {}
+    return fundamental_auswerten(j)
+
+def fundamental_auswerten(j):
     hi = j.get("Highlights", {}) or {}; va = j.get("Valuation", {}) or {}; tr = j.get("Technicals", {}) or {}
     out = {"branche": (j.get("General", {}) or {}).get("Sector"),
            "roe_pct": hi.get("ReturnOnEquityTTM"), "operative_marge_pct": hi.get("OperatingMarginTTM"),
@@ -131,7 +134,37 @@ def fundamental(sym):
                 round((float(t["epsTrendCurrent"]) / float(t["epsTrend90daysAgo"]) - 1) * 100, 2)
     except Exception:
         pass
+    # Analysten: Konsens-Kursziel und Anzahl Analysten (Stand = Abruftag)
+    ar = j.get("AnalystRatings", {}) or {}
+    ziel = ar.get("TargetPrice") or hi.get("WallStreetTargetPrice")
+    try:
+        ziel = round(float(ziel), 4) if ziel not in (None, "", 0, "0") else None
+    except (TypeError, ValueError):
+        ziel = None
+    n = 0
+    for k in ("StrongBuy", "Buy", "Hold", "Sell", "StrongSell"):
+        try: n += int(float(ar.get(k) or 0))
+        except (TypeError, ValueError): pass
+    out["kursziel"] = ziel
+    out["ziel_analysten"] = n or None
+    out["analysten_rating"] = ar.get("Rating")
+    out["ziel_datum"] = dt.date.today().isoformat() if ziel else None
     return out
+
+def zahlentermine(symbole):
+    """Nächster Termin für Geschäftszahlen je Symbol (EODHD-Kalender, nächste 150 Tage). symbole: Liste wie 'NESN.SW'."""
+    heute = dt.date.today(); bis = heute + dt.timedelta(days=150)
+    termine = {}
+    for i in range(0, len(symbole), 40):
+        teil = ",".join(symbole[i:i + 40])
+        j = hole(f"https://eodhd.com/api/calendar/earnings?api_token={KEY}&fmt=json&symbols={teil}"
+                 f"&from={heute.isoformat()}&to={bis.isoformat()}")
+        for e in (j or {}).get("earnings", []) or []:
+            code, datum = e.get("code"), e.get("report_date")
+            if code and datum and datum >= heute.isoformat():
+                if code not in termine or datum < termine[code]:
+                    termine[code] = datum
+    return termine
 
 def main():
     if not KEY:
@@ -146,7 +179,10 @@ def main():
             d.to_csv(os.path.join(OUT, "historie", f"{sym}.csv"), index=False)
             z = {"titel": sym, "vergleich": sym in VERGLEICH, **kennzahlen(d)}
             if FUND and sym not in VERGLEICH:
-                z.update(fundamental(sym))
+                try:
+                    z.update(fundamental(sym))
+                except RuntimeError as e:          # Fundamentaldaten verweigert: Kurse trotzdem speichern
+                    fehler.append(f"{sym}: Fundamentaldaten – {e}")
             zeilen.append(z)
         except RuntimeError as e:
             sys.exit(str(e))
@@ -154,6 +190,12 @@ def main():
             fehler.append(f"{sym}: {e}")
         time.sleep(0.2)
     t = pd.DataFrame(zeilen)
+    if FUND:
+        try:
+            termine = zahlentermine([f"{x}.SW" for x in UNIVERSUM])
+            t["naechste_zahlen"] = [termine.get(f"{x}.SW") for x in t["titel"]]
+        except RuntimeError as e:
+            fehler.append(f"Kalender: {e}")
     # Aktualität: erwarteter letzter Handelstag = häufigstes Datum
     soll = t["datum"].mode().iloc[0]
     t["veraltet"] = t["datum"] != soll
