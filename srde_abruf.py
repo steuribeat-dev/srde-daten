@@ -149,6 +149,14 @@ def fundamental_auswerten(j):
     out["ziel_analysten"] = n or None
     out["analysten_rating"] = ar.get("Rating")
     out["ziel_datum"] = dt.date.today().isoformat() if ziel else None
+    # Ersatz für den Kalender: nächster Termin aus Earnings.History (Einträge mit Datum in der Zukunft)
+    heute = dt.date.today().isoformat(); kand = []
+    for e in ((j.get("Earnings", {}) or {}).get("History", {}) or {}).values():
+        for f in ("reportDate", "date"):
+            v = (e or {}).get(f)
+            if isinstance(v, str) and v[:10] >= heute:
+                kand.append(v[:10]); break
+    out["naechste_zahlen_fund"] = min(kand) if kand else None
     return out
 
 def zahlentermine(symbole):
@@ -194,6 +202,8 @@ def main():
         try:
             termine = zahlentermine([f"{x}.SW" for x in UNIVERSUM])
             t["naechste_zahlen"] = [termine.get(f"{x}.SW") for x in t["titel"]]
+            if "naechste_zahlen_fund" in t.columns:
+                t["naechste_zahlen"] = t["naechste_zahlen"].fillna(t["naechste_zahlen_fund"])
         except RuntimeError as e:
             fehler.append(f"Kalender: {e}")
     # Aktualität: erwarteter letzter Handelstag = häufigstes Datum

@@ -6,7 +6,7 @@ import os, json, datetime as dt
 import srde_abruf as s
 
 TITEL = [("NESN", "SW"), ("ZURN", "SW"), ("SRAIL", "SW"), ("BSLN", "SW"), ("BCVN", "SW"),
-         ("UMI", "BR"), ("SIE", "XETRA"), ("AI", "PA"), ("ASML", "AS"), ("ENEL", "MI")]
+         ("UMI", "BR"), ("SIE", "XETRA"), ("AI", "PA"), ("ASML", "AS"), ("ENEL", "MI"), ("ISP", "MI")]
 INDIZES = ["SX5E.INDX", "STOXX50E.INDX", "SXXP.INDX"]
 
 def main():
@@ -26,6 +26,9 @@ def main():
                 r["fundamental"] = s.fundamental_auswerten(j)
                 r["analyst_rohdaten"] = j.get("AnalystRatings")
                 r["abschnitte"] = sorted(j.keys())
+                hist = ((j.get("Earnings", {}) or {}).get("History", {}) or {})
+                r["earnings_history_neueste"] = [hist[k] for k in sorted(hist)[-3:]]
+                r["highlights_auszug"] = {k: (j.get("Highlights", {}) or {}).get(k) for k in ("WallStreetTargetPrice", "MostRecentQuarter")}
             else:
                 r["fundamental"] = "keine Daten"
         except Exception as e:
@@ -33,6 +36,12 @@ def main():
         erg["titel"][f"{sym}.{b}"] = r
     try:
         erg["zahlentermine"] = s.zahlentermine([f"{x}.{b}" for x, b in TITEL])
+        heute = dt.date.today(); bis = heute + dt.timedelta(days=150)
+        erg["kalender_roh_symbole"] = s.hole(f"https://eodhd.com/api/calendar/earnings?api_token={s.KEY}&fmt=json&symbols=NESN.SW,UMI.BR,SIE.XETRA")
+        roh = s.hole(f"https://eodhd.com/api/calendar/earnings?api_token={s.KEY}&fmt=json&from={heute}&to={bis}")
+        alle = (roh or {}).get("earnings", []) or []
+        erg["kalender_ohne_symbole"] = {"anzahl": len(alle),
+            "europa": [e for e in alle if str(e.get("code", "")).split(".")[-1] in ("SW", "BR", "XETRA", "PA", "AS")][:15]}
     except Exception as e:
         erg["zahlentermine"] = f"Fehler: {e}"
     for ix in INDIZES:
