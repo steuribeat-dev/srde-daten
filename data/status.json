@@ -1,6 +1,6 @@
 {
-  "lauf_utc": "2026-11-10T00:52:39",
-  "handelstag": "2026-11-09",
+  "lauf_utc": "2026-11-10T22:32:36",
+  "handelstag": "2026-11-10",
   "titel_ok": 111,
   "titel_total": 111,
   "veraltet": [],
@@ -10,5 +10,5 @@
   ],
   "warnung_split_unbereinigt": [],
   "fehler": [],
-  "fundamentaldaten": false
+  "fundamentaldaten": true
 }
