@@ -159,19 +159,18 @@ def fundamental_auswerten(j):
     out["naechste_zahlen_fund"] = min(kand) if kand else None
     return out
 
-def zahlentermine(symbole):
-    """Nächster Termin für Geschäftszahlen je Symbol (EODHD-Kalender, nächste 150 Tage). symbole: Liste wie 'NESN.SW'."""
-    heute = dt.date.today(); bis = heute + dt.timedelta(days=150)
-    termine = {}
-    for i in range(0, len(symbole), 40):
-        teil = ",".join(symbole[i:i + 40])
-        j = hole(f"https://eodhd.com/api/calendar/earnings?api_token={KEY}&fmt=json&symbols={teil}"
-                 f"&from={heute.isoformat()}&to={bis.isoformat()}")
-        for e in (j or {}).get("earnings", []) or []:
-            code, datum = e.get("code"), e.get("report_date")
-            if code and datum and datum >= heute.isoformat():
-                if code not in termine or datum < termine[code]:
-                    termine[code] = datum
+def zahlentermine(symbole, tage=60):
+    """Nächster Termin für Geschäftszahlen je Symbol (z. B. 'NESN.SW') aus dem EODHD-Kalender.
+    Ein Abruf für alle Börsen ohne Symbolfilter (mit Symbolfilter liefert EODHD nur Teilmengen)."""
+    heute = dt.date.today(); bis = heute + dt.timedelta(days=tage)
+    j = hole(f"https://eodhd.com/api/calendar/earnings?api_token={KEY}&fmt=json"
+             f"&from={heute.isoformat()}&to={bis.isoformat()}")
+    gesucht = set(symbole); termine = {}
+    for e in (j or {}).get("earnings", []) or []:
+        code, datum = e.get("code"), e.get("report_date")
+        if code in gesucht and datum and datum >= heute.isoformat():
+            if code not in termine or datum < termine[code]:
+                termine[code] = datum
     return termine
 
 def main():
