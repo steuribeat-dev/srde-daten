@@ -1,0 +1,29 @@
+name: EODHD Test
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy
+      - name: Test
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python eodhd_test.py
+      - name: Ergebnis speichern
+        run: |
+          git config user.name "srde-bot"
+          git config user.email "srde-bot@users.noreply.github.com"
+          git add data/test_eodhd.json
+          git diff --cached --quiet || git commit -m "EODHD-Test $(date -u +%Y-%m-%d)"
+          git push
