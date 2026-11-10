@@ -1,5 +1,5 @@
 {
- "lauf_utc": "2026-11-10T19:46:39",
+ "lauf_utc": "2026-11-10T19:54:22",
  "titel": {
   "NESN.SW": {
    "kurse": {
@@ -52,7 +52,8 @@
     "kursziel": 89.0364,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-18"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -68,7 +69,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2025-10-16",
+     "date": "2025-09-30",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": 0,
+     "epsEstimate": 0,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2025-12-31",
+     "date": "2025-12-31",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": 1.5381,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-18",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 89.0364,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "ZURN.SW": {
    "kurse": {
@@ -121,7 +158,8 @@
     "kursziel": 619.8687,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-18"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -137,7 +175,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2026-02-19",
+     "date": "2025-12-31",
+     "beforeAfterMarket": null,
+     "currency": "CHF",
+     "epsActual": 26.0905,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2026-08-06",
+     "date": "2026-06-30",
+     "beforeAfterMarket": null,
+     "currency": "CHF",
+     "epsActual": 22.9987,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-18",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": "CHF",
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 619.8687,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "SRAIL.SW": {
    "kurse": {
@@ -190,7 +264,8 @@
     "kursziel": 30.8625,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-03-17"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -205,7 +280,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2025-08-27",
+     "date": "2025-06-30",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": 0.17,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2026-03-18",
+     "date": "2025-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": 0.7095,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-03-17",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 30.8625,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "BSLN.SW": {
    "kurse": {
@@ -258,7 +369,8 @@
     "kursziel": 99.62,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-16"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -273,7 +385,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2025-12-31",
+     "date": "2025-12-31",
+     "beforeAfterMarket": null,
+     "currency": "CHF",
+     "epsActual": null,
+     "epsEstimate": 1.5437,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2026-06-30",
+     "date": "2026-06-30",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": 3.3427,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-16",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": "CHF",
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 99.62,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "BCVN.SW": {
    "kurse": {
@@ -326,7 +474,8 @@
     "kursziel": 112.0,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-25"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -341,7 +490,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2025-04-08",
+     "date": "2025-03-31",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": 0,
+     "epsEstimate": 0,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2025-08-21",
+     "date": "2025-06-30",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": 0,
+     "epsEstimate": 0,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-25",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 112,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "UMI.BR": {
    "kurse": {
@@ -394,7 +579,8 @@
     "kursziel": 25.4769,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-19"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -410,7 +596,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2025-11-28",
+     "date": "2025-09-30",
+     "beforeAfterMarket": null,
+     "currency": "EUR",
+     "epsActual": 0,
+     "epsEstimate": 0,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2025-12-31",
+     "date": "2025-12-31",
+     "beforeAfterMarket": null,
+     "currency": "EUR",
+     "epsActual": 1.3101,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-19",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 25.4769,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "SIE.XETRA": {
    "kurse": {
@@ -463,7 +685,8 @@
     "kursziel": 305.1754,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2026-11-12"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -479,7 +702,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2026-05-12",
+     "date": "2026-03-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": 2.81,
+     "epsEstimate": 2.68,
+     "epsDifference": 0.13,
+     "surprisePercent": 4.8507
+    },
+    {
+     "reportDate": "2026-08-06",
+     "date": "2026-06-30",
+     "beforeAfterMarket": "BeforeMarket",
+     "currency": null,
+     "epsActual": 3.14,
+     "epsEstimate": 2.75,
+     "epsDifference": 0.39,
+     "surprisePercent": 14.1818
+    },
+    {
+     "reportDate": "2026-11-12",
+     "date": "2026-09-30",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": 2.81,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 305.1754,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "AI.PA": {
    "kurse": {
@@ -532,7 +791,8 @@
     "kursziel": 201.675,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-02-19"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -548,7 +808,43 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2026-04-22",
+     "date": "2026-03-31",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": 0,
+     "epsEstimate": 0,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2026-06-30",
+     "date": "2026-06-30",
+     "beforeAfterMarket": null,
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": 3.22,
+     "epsDifference": 0,
+     "surprisePercent": null
+    },
+    {
+     "reportDate": "2027-02-19",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": null,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 201.675,
+    "MostRecentQuarter": "2026-06-30"
+   }
   },
   "ASML.AS": {
    "kurse": {
@@ -601,7 +897,8 @@
     "kursziel": 2095.9395,
     "ziel_analysten": null,
     "analysten_rating": null,
-    "ziel_datum": "2026-11-10"
+    "ziel_datum": "2026-11-10",
+    "naechste_zahlen_fund": "2027-01-27"
    },
    "analyst_rohdaten": null,
    "abschnitte": [
@@ -617,9 +914,49 @@
     "Technicals",
     "Valuation",
     "outstandingShares"
-   ]
+   ],
+   "earnings_history_neueste": [
+    {
+     "reportDate": "2026-07-15",
+     "date": "2026-06-30",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": 7.58,
+     "epsEstimate": 6.95,
+     "epsDifference": 0.63,
+     "surprisePercent": 9.0647
+    },
+    {
+     "reportDate": "2026-10-14",
+     "date": "2026-09-30",
+     "beforeAfterMarket": "BeforeMarket",
+     "currency": null,
+     "epsActual": 11.82,
+     "epsEstimate": 10.76,
+     "epsDifference": 1.06,
+     "surprisePercent": 9.8513
+    },
+    {
+     "reportDate": "2027-01-27",
+     "date": "2026-12-31",
+     "beforeAfterMarket": "AfterMarket",
+     "currency": null,
+     "epsActual": null,
+     "epsEstimate": 15.39,
+     "epsDifference": 0,
+     "surprisePercent": null
+    }
+   ],
+   "highlights_auszug": {
+    "WallStreetTargetPrice": 2095.9395,
+    "MostRecentQuarter": "2026-09-30"
+   }
   },
   "ENEL.MI": {
+   "kurse": "keine Daten",
+   "fundamental": "keine Daten"
+  },
+  "ISP.MI": {
    "kurse": "keine Daten",
    "fundamental": "keine Daten"
   }
@@ -657,13 +994,201 @@
   }
  },
  "zahlentermine": {},
+ "kalender_roh_symbole": {
+  "type": "Earnings",
+  "description": "Historical and upcoming Earnings",
+  "symbols": "NESN.SW,UMI.BR,SIE.XETRA",
+  "earnings": [
+   {
+    "code": "SIE.XETRA",
+    "report_date": "2026-11-12",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 2.81,
+    "difference": 0,
+    "percent": null
+   }
+  ]
+ },
+ "kalender_ohne_symbole": {
+  "anzahl": 24177,
+  "europa": [
+   {
+    "code": "VODI.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "LEHN.SW",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": "CHF",
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "ADV.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "ELG.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 1.92,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "HABA.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "KSB.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "HEN.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "IFX.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 0.63,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "TEG.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 0.38,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "UN0.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "ALC.SW",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 0.89,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "SLYG.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": null,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "2U3.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 0.89,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "SDF.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": -0.3,
+    "difference": 0,
+    "percent": null
+   },
+   {
+    "code": "JEN.XETRA",
+    "report_date": "2026-11-10",
+    "date": "2026-09-30",
+    "before_after_market": "AfterMarket",
+    "currency": null,
+    "actual": null,
+    "estimate": 0.55,
+    "difference": 0,
+    "percent": null
+   }
+  ]
+ },
  "eurchf": {
   "date": "2026-11-10",
   "open": 0.9196,
   "high": 0.922,
   "low": 0.9186,
-  "close": 0.9214,
-  "adjusted_close": 0.9214,
+  "close": 0.9212,
+  "adjusted_close": 0.9212,
   "volume": 0
  }
 }
