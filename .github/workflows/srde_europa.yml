@@ -1,0 +1,38 @@
+name: SRDE Datenabruf Europa
+
+on:
+  schedule:
+    - cron: "5 18 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-schreiben
+  cancel-in-progress: false
+
+jobs:
+  abruf:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy
+      - name: Daten abrufen
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+          FUNDAMENTALS: ${{ vars.FUNDAMENTALS }}
+        run: python srde_europa.py
+      - name: Daten speichern
+        run: |
+          git config user.name "srde-bot"
+          git config user.email "srde-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "Daten Europa $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 10; done
+          exit 1
