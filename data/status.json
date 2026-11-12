@@ -1,11 +1,10 @@
 {
-  "lauf_utc": "2026-11-11T23:44:31",
-  "handelstag": "2026-11-11",
+  "lauf_utc": "2026-11-12T19:27:53",
+  "handelstag": "2026-11-12",
   "titel_ok": 111,
   "titel_total": 111,
   "veraltet": [],
   "split_bereinigt_hinweis": [
-    "DOKA",
     "SQN"
   ],
   "warnung_split_unbereinigt": [],
