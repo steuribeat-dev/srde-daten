@@ -44,16 +44,21 @@ def schreiben(pos):
         for p in sorted(pos, key=lambda x: x["titel"]):
             w.writerow(p)
 
+KZ_EU = os.path.join(BASIS, "data", "kennzahlen_europa.csv")
+
 def atr(titel):
-    if not os.path.exists(KZ):
-        return None, False
-    with open(KZ, newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            if row["titel"] == titel:
-                try:
-                    return float(row.get("atr_chf") or ""), True
-                except ValueError:
-                    return None, True
+    """ATR14 in Handelswährung: Schweizer Titel aus kennzahlen.csv (atr_chf),
+    europäische Titel (Format KÜRZEL.BÖRSE, z. B. SIE.XETRA) aus kennzahlen_europa.csv (atr)."""
+    for datei, spalte in ((KZ, "atr_chf"), (KZ_EU, "atr")):
+        if not os.path.exists(datei):
+            continue
+        with open(datei, newline="", encoding="utf-8") as fh:
+            for row in csv.DictReader(fh):
+                if row["titel"].upper() == titel:
+                    try:
+                        return float(row.get(spalte) or ""), True
+                    except ValueError:
+                        return None, True
     return None, False
 
 def main():
@@ -78,7 +83,8 @@ def main():
             sys.exit("Für einen Kauf Anzahl und Kurs angeben")
         a, bekannt = atr(titel)
         if not bekannt:
-            sys.exit(f"{titel} ist nicht in kennzahlen.csv – Kürzel prüfen (z. B. NOVN, BSLN). Nichts geändert.")
+            sys.exit(f"{titel} ist weder in kennzahlen.csv noch in kennzahlen_europa.csv – Kürzel prüfen "
+                         f"(Schweiz z. B. NOVN, Europa z. B. SIE.XETRA). Nichts geändert.")
         if alt:  # Nachkauf: Durchschnittskurs
             n_alt, k_alt = int(alt["stueck"] or 0), float(alt["kaufkurs"] or 0)
             n = n_alt + stueck
@@ -105,7 +111,7 @@ def main():
             print(f"Verkauf {titel}: Position entfernt")
         if kurs and alt.get("kaufkurs"):
             k = float(alt["kaufkurs"])
-            print(f"Ergebnis je Aktie vor Gebühren: {kurs - k:+.2f} CHF ({(kurs / k - 1) * 100:+.1f} %)")
+            print(f"Ergebnis je Aktie vor Gebühren: {kurs - k:+.2f} (Handelswährung, {(kurs / k - 1) * 100:+.1f} %)")
     else:
         sys.exit("Aktion muss «Kauf» oder «Verkauf» sein")
 

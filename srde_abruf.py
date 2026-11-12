@@ -107,7 +107,7 @@ def fundamental(sym, boerse="SW"):
 
 def fundamental_auswerten(j):
     hi = j.get("Highlights", {}) or {}; va = j.get("Valuation", {}) or {}; tr = j.get("Technicals", {}) or {}
-    out = {"branche": (j.get("General", {}) or {}).get("Sector"),
+    out = {"branche": (j.get("General", {}) or {}).get("Sector"), "waehrung": (j.get("General", {}) or {}).get("CurrencyCode"),
            "roe_pct": hi.get("ReturnOnEquityTTM"), "operative_marge_pct": hi.get("OperatingMarginTTM"),
            "kgv": hi.get("PERatio"), "kgv_erwartet": va.get("ForwardPE"), "ev_ebitda": va.get("EnterpriseValueEbitda"),
            "dividendenrendite_pct": hi.get("DividendYield"), "gewinn_je_aktie_schaetzung_jahr": hi.get("EPSEstimateCurrentYear"),
