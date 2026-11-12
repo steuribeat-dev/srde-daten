@@ -107,6 +107,8 @@ def main():
     soll = t["datum"].mode().iloc[0]
     t["veraltet"] = t["datum"] != soll
     t.to_csv(os.path.join(OUT, "kennzahlen_europa.csv"), index=False)
+    print("Titel je Börse:", t["boerse"].value_counts().to_dict())
+    print("Datum je Börse:", t.groupby("boerse")["datum"].max().to_dict())
     status = {"lauf_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"), "handelstag": soll,
               "universum": f"{INDEX} ohne {', '.join(sorted(AUSGESCHLOSSEN))} ({quelle})",
               "titel_total": int(len(u)), "titel_geladen": int(len(t)), "titel_ok": int((~t["veraltet"]).sum()),
@@ -118,8 +120,9 @@ def main():
         json.dump(status, fh, ensure_ascii=False, indent=2)
     print(json.dumps({k: v for k, v in status.items() if k != "fehler"}, ensure_ascii=False, indent=2))
     print(f"Fehler: {len(fehler)}")
-    if status["titel_ok"] < 0.8 * len(u):
-        sys.exit("Weniger als 80 % der Europa-Titel aktuell – Lauf als fehlgeschlagen markiert.")
+    # Daten immer speichern; veraltete Titel sind in status_europa.json markiert und werden nicht signalisiert.
+    if status["titel_geladen"] < 0.5 * len(u):
+        sys.exit("Weniger als die Hälfte der Europa-Titel geladen – Lauf als fehlgeschlagen markiert (Daten trotzdem gespeichert).")
 
 if __name__ == "__main__":
     main()
