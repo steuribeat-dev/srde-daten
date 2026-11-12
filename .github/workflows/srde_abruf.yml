@@ -1,20 +1,21 @@
-name: SRDE Datenabruf
+name: SRDE Datenabruf Europa
 
 on:
   schedule:
-    - cron: "45 17 * * 1-5"
+    - cron: "15 20 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
-     concurrency:
-       group: repo-schreiben
-       cancel-in-progress: false
+concurrency:
+  group: repo-schreiben
+  cancel-in-progress: false
+
 jobs:
   abruf:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,13 +26,13 @@ jobs:
         env:
           EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
           FUNDAMENTALS: ${{ vars.FUNDAMENTALS }}
-        run: python srde_abruf.py
+        run: python srde_europa.py
       - name: Daten speichern
         run: |
           git config user.name "srde-bot"
           git config user.email "srde-bot@users.noreply.github.com"
-          git add data
-                        git diff --cached --quiet && exit 0
-               git commit -m "Daten $(date -u +%Y-%m-%d)"
-               for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 10; done
-               exit 1
+          git add -A data
+          git diff --cached --quiet && exit 0
+          git commit -m "Daten Europa $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 10; done
+          exit 1
