@@ -1,6 +1,6 @@
 {
-  "lauf_utc": "2026-11-13T01:10:13",
-  "handelstag": "2026-11-12",
+  "lauf_utc": "2026-11-13T23:53:28",
+  "handelstag": "2026-11-13",
   "universum": "SXXP.INDX ohne IL, LSE, MI, SW (index)",
   "titel_total": 371,
   "titel_geladen": 371,
@@ -14,10 +14,10 @@
     "ATS.VI"
   ],
   "waehrungen": {
-    "DKK": 0.12362,
-    "EUR": 0.9241,
-    "NOK": 0.0874,
-    "PLN": 0.20973853766918,
+    "DKK": 0.12372,
+    "EUR": 0.9247,
+    "NOK": 0.0876,
+    "PLN": 0.20998173952103,
     "SEK": 0.0833
   },
   "fehler": [],
