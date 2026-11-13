@@ -2,7 +2,7 @@ name: SRDE Datenabruf Europa
 
 on:
   schedule:
-    - cron: "15 20 * * 1-5"
+    - cron: "37 18 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
