@@ -1,17 +1,12 @@
 {
-  "lauf_utc": "2026-11-12T19:21:43",
+  "lauf_utc": "2026-11-13T01:10:13",
   "handelstag": "2026-11-12",
   "universum": "SXXP.INDX ohne IL, LSE, MI, SW (index)",
   "titel_total": 371,
   "titel_geladen": 371,
-  "titel_ok": 365,
+  "titel_ok": 370,
   "veraltet": [
-    "INPST.AS",
-    "BCP.LS",
-    "EDP.LS",
-    "EDPR.LS",
-    "GALP.LS",
-    "JMT.LS"
+    "INPST.AS"
   ],
   "warnung_split_unbereinigt": [
     "ZEAL.CO",
@@ -19,10 +14,10 @@
     "ATS.VI"
   ],
   "waehrungen": {
-    "DKK": 0.12351,
-    "EUR": 0.9233,
-    "NOK": 0.0872,
-    "PLN": 0.20963737368584,
+    "DKK": 0.12362,
+    "EUR": 0.9241,
+    "NOK": 0.0874,
+    "PLN": 0.20973853766918,
     "SEK": 0.0833
   },
   "fehler": [],
